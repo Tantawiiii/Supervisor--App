@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:supervisor/features/profile/change_password_screen.dart';
+import 'package:supervisor/features/profile/lost_object_screen.dart';
+import 'package:supervisor/features/profile/profile_screen.dart';
 
 class MapTrackerScreen extends StatelessWidget {
   final String? busId;
@@ -37,8 +40,12 @@ class MapTrackerScreen extends StatelessWidget {
             backgroundColor: Colors.red,
             label: 'Profile',
             labelStyle: const TextStyle(fontSize: 15.0),
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, '/profile_screen'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
+              ),
+            ),
           ),
           SpeedDialChild(
             shape: const CircleBorder(),
@@ -46,8 +53,12 @@ class MapTrackerScreen extends StatelessWidget {
             backgroundColor: Colors.green,
             label: 'Lost Objects',
             labelStyle: const TextStyle(fontSize: 15.0),
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, '/lost_objects_screen'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LostObjectScreen(),
+              ),
+            ),
           ),
           SpeedDialChild(
             shape: const CircleBorder(),
@@ -57,8 +68,12 @@ class MapTrackerScreen extends StatelessWidget {
             backgroundColor: Colors.orange,
             label: 'Change Password',
             labelStyle: const TextStyle(fontSize: 15.0),
-            onTap: () => Navigator.pushReplacementNamed(
-                context, '/change_password_screen'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ChangePasswordScreen(),
+              ),
+            ),
           ),
         ],
       ),
@@ -94,7 +109,7 @@ class MapTrackerScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Next Stop:${currentTime.hour}:${currentTime.minute}:${currentTime.second}',
+                    'Next Stop: ${currentTime.hour}:${currentTime.minute}:${currentTime.second}',
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
@@ -109,33 +124,6 @@ class MapTrackerScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  void _showMenu(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Add your logic for Item 1
-                Navigator.pop(context); // Close the modal bottom sheet
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Add your logic for Item 2
-                Navigator.pop(context); // Close the modal bottom sheet
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

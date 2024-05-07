@@ -27,7 +27,7 @@ class _HomeBusScreenState extends State<HomeBusScreen> {
       appBar: AppBar(
         elevation: 4,
         shadowColor: Colors.cyan,
-        backgroundColor: Colors.blue.shade500,
+        backgroundColor: const Color(0x0008b09e),
         title: const Text(
           'Choose your Bus',
           style: TextStyle(
