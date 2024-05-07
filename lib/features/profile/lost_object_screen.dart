@@ -14,7 +14,7 @@ class LostObjectScreen extends StatelessWidget {
         title: const Text(
           'Lost Object',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),

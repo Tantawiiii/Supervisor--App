@@ -13,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
         title: const Text(
           'Profile',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
         child: Center(
           child: ListView(
             children: const [
-              SizedBox(height: 40),
+              SizedBox(height: 60),
               CircleAvatar(
                 radius: 80,
                 backgroundImage: AssetImage('assets/profile_image.jpg'),

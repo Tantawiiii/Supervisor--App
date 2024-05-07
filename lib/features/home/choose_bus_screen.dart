@@ -1,22 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:supervisor/features/home/map_track_screen.dart';
 
-class HomeBusScreen extends StatefulWidget {
-  const HomeBusScreen({super.key});
+class ChooseYourBusScreen extends StatefulWidget {
+  const ChooseYourBusScreen({super.key});
 
   @override
-  State<HomeBusScreen> createState() => _HomeBusScreenState();
+  State<ChooseYourBusScreen> createState() => _ChooseYourBusScreenState();
 }
 
-class _HomeBusScreenState extends State<HomeBusScreen> {
+class _ChooseYourBusScreenState extends State<ChooseYourBusScreen> {
+
+
   List<String> buses = [
     'Bus 01',
     'Bus 02',
     'Bus 03',
     'Bus 04',
     'Bus 05',
+
   ];
   String? selectedValue;
 
@@ -27,7 +28,7 @@ class _HomeBusScreenState extends State<HomeBusScreen> {
       appBar: AppBar(
         elevation: 4,
         shadowColor: Colors.cyan,
-        backgroundColor: const Color(0x0008b09e),
+        backgroundColor:  Colors.blue.shade500,
         title: const Text(
           'Choose your Bus',
           style: TextStyle(

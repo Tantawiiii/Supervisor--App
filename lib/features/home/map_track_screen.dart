@@ -90,7 +90,6 @@ class MapTrackerScreen extends StatelessWidget {
               ),
               zoomControlsEnabled: true,
               zoomGesturesEnabled: true,
-              myLocationEnabled: true,
               markers: {
                 const Marker(
                   markerId: MarkerId('marker_1'),
@@ -102,7 +101,7 @@ class MapTrackerScreen extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.white,
+              color: Colors.white60,
               padding: const EdgeInsets.all(40.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -113,8 +112,9 @@ class MapTrackerScreen extends StatelessWidget {
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(height: 15,),
                   Text(
-                    "Bus ID: ${busId ?? ""}",
+                    "Bus ID: ${busId ?? "" }",
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),

@@ -3,8 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
+class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
+
+  @override
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
+}
+
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+
+
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _currentPassController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,40 +38,71 @@ class ChangePasswordScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(labelText: 'Current Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(labelText: 'New Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(labelText: 'Confirm Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 100),
-            ElevatedButton(
-              onPressed: () {
-                Fluttertoast.showToast(
-                    msg: "Password Changed",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 1,
-                    backgroundColor: Colors.blueAccent,
-                    textColor: Colors.white,
-                    fontSize: 14.0);
-              },
-              child: const Text('Save',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              TextFormField(
+                controller: _currentPassController,
+                decoration: const InputDecoration(labelText: 'Current Password'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your CurrentPassword';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _newPasswordController,
+                decoration: const InputDecoration(labelText: 'New Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your New password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _confirmPasswordController,
+                decoration: const InputDecoration(labelText: 'Confirm Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your Confirm password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Fluttertoast.showToast(
+                        msg: "Password has been changed successfully",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.blueAccent,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                  }
+                },
+                child: const Text(
+                  'Save',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+
+            ],
+          ),
         ),
       ),
     );
